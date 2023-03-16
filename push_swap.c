@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:21:31 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/15 13:54:16 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/16 14:57:33 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,9 @@ t_node	*sort_stack_a(t_node *stack_a)
 	t_node	*stack_b;
 	int		stack_b_size;
 	int		not_sorted_point;
+	int		i;
+	t_node	*copy_stack_b;
+	t_node	*copy_stack_a;
 
 	stack_b = (void *) 0;
 	if (check_perfectly_sorted_stack_a(stack_a) == 1)
@@ -223,6 +226,26 @@ t_node	*sort_stack_a(t_node *stack_a)
 	while (check_perfectly_sorted_stack_a(stack_a) != 1 ||
 		   check_perfectly_sorted_stack_b(stack_b) != 1)
 	{
+		i = 0;
+		copy_stack_b = stack_b;
+		if (copy_stack_b == (void *) 0)
+			ft_printf("stack_b[0]: NULL\n");
+		while (copy_stack_b != (void *) 0)
+		{
+			ft_printf("stack_b[%d]: %d\n", i, copy_stack_b->number);
+			copy_stack_b = copy_stack_b->next;
+			i++;
+		}
+		i = 0;
+		copy_stack_a = stack_a;
+		if (copy_stack_a == (void *) 0)
+			ft_printf("stack_a[0]: NULL\n");
+		while (copy_stack_a != (void *) 0)
+		{
+			ft_printf("stack_a[%d]: %d\n", i, copy_stack_a->number);
+			copy_stack_a = copy_stack_a->next;
+			i++;
+		}
 		check_first_second(stack_a, stack_b); 
 		check_first_last(stack_a, stack_b);
 		stack_b_size = get_stack_size(stack_b);
@@ -243,6 +266,14 @@ int	main(int argc, char *argv[])
 
 	check_exception(argc, argv);
 	stack_a = get_stack_a(argv);
+	copy_stack = stack_a;
+	i = 0;
+	while (copy_stack != (void *) 0)
+	{
+		ft_printf("stack_a[%d]->number: %d\n", i, copy_stack->number);
+		i++;
+		copy_stack = copy_stack->next;
+	}
 	stack_a = sort_stack_a(stack_a);
 	copy_stack = stack_a;
 	i = 0;

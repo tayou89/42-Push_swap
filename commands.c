@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 11:53:52 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/14 13:34:08 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/16 15:09:59 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ void	command_swap(t_node *stack)
 
 void	command_push(t_node *stack_from, t_node *stack_to)
 {
+	t_node	*new_node;
+
 	if (stack_from == (void *) 0)
 		return ;
-	stack_to = add_node_front(&stack_to, stack_from);
-	if (stack_from->next != (void *) 0)
-		stack_from->next->prev = (void *) 0;
+	new_node = get_new_node(stack_from->number);
+	stack_to = add_node_front(&stack_to, new_node);
 	stack_from = del_node_front(stack_from);
 }
 

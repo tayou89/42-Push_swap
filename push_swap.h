@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 09:39:01 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/14 13:34:24 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/16 15:08:20 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void		command_rotate_down(t_node *stack);
 t_node		*find_node_last(t_node *stack);
 t_node		*get_new_node(int number);
 t_node		*add_node_back(t_node **stack, t_node *new_node);
-t_node		*add_node_front(t_node **stack, t_node *new_node);
+t_node		*add_node_front(t_node *stack, t_node *new_node);
 t_node		*del_node_front(t_node *stack);
 
 char		**get_string_array(char **argv);
