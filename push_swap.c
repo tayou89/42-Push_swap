@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:21:31 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/14 15:06:17 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/15 13:54:16 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,22 +188,49 @@ int	check_if_sorted_stack_b(t_node *stack_b)
 	return (0);
 }
 
+t_node	*sort_stack_b(t_node *stack_b, int not_sorted_point)
+{
+	int	i;
+
+	i = 0;
+	while (i < not_sorted_point)
+	{
+		command_rotate_up(stack_b);
+		ft_printf("rb\n");
+		i++;
+	}
+	command_swap(stack_b);
+	ft_printf("sb\n");
+	i = 0;
+	while (i < not_sorted_point)
+	{
+		command_rotate_down(stack_b);
+		ft_printf("rrb\n");
+		i++;
+	}
+	return (stack_b);
+}
+
 t_node	*sort_stack_a(t_node *stack_a)
 {
 	t_node	*stack_b;
+	int		stack_b_size;
 	int		not_sorted_point;
 
 	stack_b = (void *) 0;
 	if (check_perfectly_sorted_stack_a(stack_a) == 1)
 		return (stack_a);
-	while (check_perfectly_sorted_stack_a(stack_a) != 1 &&
+	while (check_perfectly_sorted_stack_a(stack_a) != 1 ||
 		   check_perfectly_sorted_stack_b(stack_b) != 1)
 	{
 		check_first_second(stack_a, stack_b); 
 		check_first_last(stack_a, stack_b);
+		stack_b_size = get_stack_size(stack_b);
+		if (stack_b_size < 2)
+			continue ;
 		not_sorted_point = check_if_sorted_stack_b(stack_b);
 		if (not_sorted_point > 0)
-			sort_stack_b(stack_b);
+			sort_stack_b(stack_b, not_sorted_point);
 	}
 	return (stack_a);
 }
