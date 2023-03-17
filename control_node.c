@@ -6,13 +6,13 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 11:43:09 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/16 15:10:02 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/17 15:24:19 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*find_node_last(t_node *stack)
+t_node	*find_last_node(t_node *stack)
 {
 	if (stack == (void *) 0)
 		return (stack);
@@ -35,35 +35,35 @@ t_node	*get_new_node(int number)
 	return (new_node);
 }
 
-t_node	*add_node_back(t_node **stack, t_node *new_node)
+t_node	*add_node_back(t_node *stack, t_node *new_node)
 {
 	t_node	*copy_head;
 
 	if (stack == (void *) 0)
 	{
-		*stack = new_node;
-		return (*stack);
+		stack = new_node;
+		return (stack);
 	}
-	copy_head = *stack;
+	copy_head = stack;
 	while (copy_head->next != (void *) 0)
 		copy_head = copy_head->next;
 	copy_head->next = new_node;
 	new_node->prev = copy_head;
-	return (*stack);
+	return (stack);
 }
 
-t_node	*add_node_front(t_node **stack, t_node *new_node)
+t_node	*add_node_front(t_node *stack, t_node *new_node)
 {
 	if (new_node == (void *) 0)
-		return (*stack);
-	if (*stack == (void *) 0)
+		return (stack);
+	if (stack == (void *) 0)
 	{
-		*stack = new_node;
-		return (*stack);
+		stack = new_node;
+		return (stack);
 	}
-	new_node->next = *stack;
-	*stack = new_node;
-	return (*stack);
+	new_node->next = stack;
+	stack = new_node;
+	return (stack);
 }
 
 t_node	*del_node_front(t_node *stack)
@@ -75,5 +75,16 @@ t_node	*del_node_front(t_node *stack)
 		stack->next->prev = (void *) 0;
 	stack = stack->next;
 	free(temp);
+	return (stack);
+}
+
+t_node	*del_node_back(t_node *stack)
+{
+	t_node	*copy_stack;
+
+	copy_stack = stack;
+	while (copy_stack->next != (void *) 0)
+		copy_stack = copy_stack->next;
+	free(copy_stack);
 	return (stack);
 }

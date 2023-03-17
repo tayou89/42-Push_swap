@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 12:10:55 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/12 08:00:41 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/17 12:00:20 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_node	*initialize_stack_a(char **argv)
 			free_array(string_array);
 			exit(1);
 		}
-		stack_a = add_node_back(&stack_a, new_node);
+		stack_a = add_node_back(stack_a, new_node);
 		i++;
 	}
 	free_array(string_array);

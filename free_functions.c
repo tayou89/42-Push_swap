@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 11:54:21 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/13 14:42:16 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/17 12:51:07 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,11 @@ void	free_list(t_node *list)
 		free(list_head);
 	}
 	list = (void *) 0;
+}
+
+void	free_list_both(t_node *list_1, t_node *list_2)
+{
+	free_list(list_1);
+	free_list(list_2);
+	exit(1);
 }

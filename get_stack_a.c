@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 13:44:14 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/14 13:53:11 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/17 11:56:29 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_node	*get_original_stack_a(int *int_array, int int_count)
 			free_list(stack_a);
 			return ((void *) 0);
 		}
-		stack_a = add_node_back(&stack_a, new_node);
+		stack_a = add_node_back(stack_a, new_node);
 		i++;
 	}
 	return (stack_a);
