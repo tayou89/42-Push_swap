@@ -6,11 +6,24 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:21:31 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/17 15:30:52 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/19 17:24:03 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	print_stack(t_node *stack)
+{
+	int	i;
+
+	i = 0;
+	while (stack != (void *) 0)
+	{
+		ft_printf("stack[%d]: %d\n", i, stack->number);
+		i++;
+		stack = stack->next;
+	}
+}
 
 t_deque	*get_deque(t_node *stack)
 
@@ -158,159 +171,170 @@ void	check_first_last(t_node **stack_a, t_node **stack_b)
 		command_push(stack_a, stack_b);
 		ft_printf("pb\n");
 	}
+	else
+	{
+		command_rotate_down(stack_a, stack_b);
+		ft_printf("rra\n");
+		check_first_last(stack_a, stack_b);
+	}
 }
 
-int	check_before_last(t_node *stack_b)
+int	compare_with_next_node(t_node *node, t_node *stack)
 {
 	int	min_number;
 	int	max_number;
-	int	i;
 
-	min_number = get_min_number(stack_b);
-	max_number = get_max_number(stack_b);
-	i = 0;
-	while (stack_b->next != (void *) 0)
+	min_number = get_min_number(stack);
+	max_number = get_max_number(stack);
+	if (node->next == (void *) 0)
+		return (0);
+	if (node->number != min_number)
 	{
-		if (stack_b->number != min_number)
-		{
-			if (stack_b->number < stack_b->next->number)
-				return (i);
-		}
-		else
-		{
-			if (stack_b->next->number != max_number)
-				return (i);
-		}
+		if (node->number < node->next->number)
+			return (1);
+	}
+	else
+	{
+		if (node->next->number != max_number)
+			return (1);
+	}
+	return (0);
+}
+
+int	get_not_sorted_point(t_node *stack_b)
+{
+	t_node	*copy_stack;
+	int		i;
+
+	copy_stack = stack_b;
+	i = 0;
+	while (copy_stack != (void *) 0)
+	{
+		if (compare_with_next_node(copy_stack, stack_b) == 1)
+			return (i);
 		i++;
-		stack_b = stack_b->next;
+		copy_stack = copy_stack->next;
 	}
 	return (0);
 }
 	
-int	check_last(t_node *stack_b)
-{
-	t_node	*last_node;
-	t_node	*first_node;
-	int		min_number;
-	int		max_number;
-	int		not_sorted_point;
-
-	last_node = find_last_node(stack_b);
-	first_node = stack_b;
-	min_number = get_min_number(stack_b);
-	max_number = get_max_number(stack_b);
-	not_sorted_point = get_stack_size(stack_b) - 1;
-	if (last_node->number != min_number)
-	{
-		if (last_node->number < first_node->number)
-			return (not_sorted_point);
-	}
-	else
-	{
-		if (first_node->number != max_number)
-			return (not_sorted_point);
-	}
-	return (0);
-}
-
-int	check_if_sorted_stack_b(t_node *stack_b)
-{
-	int		size;
-	int		not_sorted_point;
-
-	size = get_stack_size(stack_b);
-	if (size < 2)
-		return (0);
-	not_sorted_point = check_before_last(stack_b);
-	not_sorted_point = check_last(stack_b);
-	return (not_sorted_point);
-}
-
-t_node	*sort_stack_b(t_node *stack_b, t_node *stack_a, int not_sorted_point)
+void	sort_stack_b(t_node **stack_b, t_node **stack_a, int not_sorted_point)
 {
 	int	i;
 
 	i = 0;
 	while (i < not_sorted_point)
 	{
-		command_rotate_up(&stack_b, &stack_a);
+		command_rotate_up(stack_b, stack_a);
 		ft_printf("rb\n");
 		i++;
 	}
-	command_swap(stack_b);
+	command_swap(*stack_b);
 	ft_printf("sb\n");
 	i = 0;
 	while (i < not_sorted_point)
 	{
-		command_rotate_down(&stack_b, &stack_a);
+		command_rotate_down(stack_b, stack_a);
 		ft_printf("rrb\n");
 		i++;
 	}
-	return (stack_b);
 }
 
-void	print_stack(t_node *stack)
+void	check_if_sorted_stack_b(t_node **stack_b, t_node **stack_a)
+{
+	int		size;
+	int		not_sorted_point;
+
+	size = get_stack_size(*stack_b);
+	if (size < 3)
+		return ;
+	not_sorted_point = get_not_sorted_point(*stack_b);
+	ft_printf("not_sorted_point: %d\n", not_sorted_point);
+	if (not_sorted_point > 0)
+		sort_stack_b(stack_b, stack_a, not_sorted_point);
+}
+
+int	get_max_number_index(t_node *stack, int max_number)
+{
+	int	i;
+	int	max_number_index;
+
+	i = 0;
+	while (stack->number != max_number)
+	{
+		stack = stack->next;
+		i++;
+	}
+	max_number_index = i;
+	return (max_number_index);
+}
+
+void	put_max_on_top(t_node **stack_to_rotate, t_node **other_stack, int count)
 {
 	int	i;
 
 	i = 0;
-	while (stack != (void *) 0)
+	while (i < count)
 	{
-		ft_printf("stack[%d]: %d\n", i, stack->number);
+		command_rotate_up(stack_to_rotate, other_stack);
+		ft_printf("rb\n");
 		i++;
-		stack = stack->next;
 	}
 }
+
+void	check_max_number_index(t_node **stack_to_check, t_node **other_stack)
+{
+	int	stack_size;
+	int	max_number;
+	int	max_number_index;
+
+	stack_size = get_stack_size(*stack_to_check);
+	if (stack_size < 2)
+		return ;
+	max_number = get_max_number(*stack_to_check);
+	max_number_index = get_max_number_index(*stack_to_check, max_number);
+	ft_printf("max_number_index: %d\n", max_number_index);
+	if (max_number_index > 0)
+		put_max_on_top(stack_to_check, other_stack, max_number_index);
+}
+
 
 t_node	*sort_stack_a(t_node *stack_a)
 {
 	t_node	*stack_b;
-	int		not_sorted_point;
+	int		i;
 
 	stack_b = (void *) 0;
 	if (check_perfectly_sorted_stack_a(stack_a) == 1)
 		return (stack_a);
-	while (check_perfectly_sorted_stack_a(stack_a) == 0 ||
-		   check_perfectly_sorted_stack_b(stack_b) == 0)
+	i = 0;
+//	while (check_perfectly_sorted_stack_a(stack_a) == 0 ||
+//		   check_perfectly_sorted_stack_b(stack_b) == 0)
+	while (i < 7)
 	{
-		check_first_second(stack_a, stack_b); 
-		not_sorted_point = check_if_sorted_stack_b(stack_b);
-		if (not_sorted_point > 0)
-			stack_b = sort_stack_b(stack_b, stack_a, not_sorted_point);
+		check_first_second(stack_a, stack_b);
+		check_if_sorted_stack_b(&stack_b, &stack_a);
+		check_max_number_index(&stack_b, &stack_a);
 		check_first_last(&stack_a, &stack_b);
+		ft_printf("------------stack_a--------------\n");
+		print_stack(stack_a);
+		ft_printf("------------stack_b--------------\n");
+		print_stack(stack_b);
+		i++;
 	}
-	ft_printf("------------stack_a--------------\n");
-	print_stack(stack_a);
-	ft_printf("------------stack_b--------------\n");
-	print_stack(stack_b);
+	free_list(stack_b);
 	return (stack_a);
 }
 
 int	main(int argc, char *argv[])
 {
 	t_node	*stack_a;
-	t_node	*copy_stack;
-	int		i;
 
 	check_exception(argc, argv);
 	stack_a = get_stack_a(argv);
-	copy_stack = stack_a;
-	i = 0;
-	while (copy_stack != (void *) 0)
-	{
-		ft_printf("stack_a[%d]->number: %d\n", i, copy_stack->number);
-		i++;
-		copy_stack = copy_stack->next;
-	}
+	ft_printf("----------------original stack_a-----------------\n");
+	print_stack(stack_a);
 	stack_a = sort_stack_a(stack_a);
-	copy_stack = stack_a;
-	i = 0;
-	while (copy_stack != (void *) 0)
-	{
-		ft_printf("stack_a[%d]->number: %d\n", i, copy_stack->number);
-		i++;
-		copy_stack = copy_stack->next;
-	}
 	free_list(stack_a);
 	system("leaks push_swap");
 	return (0);
