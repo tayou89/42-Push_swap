@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 09:39:01 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/17 14:55:19 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/20 13:40:53 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,31 @@ int			*get_int_array(char **string_array, int *int_count);
 t_node		*get_stack_a(char **argv);
 long long	ft_atoll(const char *str);
 
+void		sort_until_sorted(t_node **stack_a, t_node **stack_b);
+
+int			check_perfectly_sorted_stack_a(t_node *stack);
+int			check_perfectly_sorted_stack_b(t_node *stack);
+void		check_first_second_node(t_node **stack_a, t_node **stack_b);
+void		check_if_sorted_stack_b(t_node **stack_b, t_node **stack_a);
+void		check_first_last_node(t_node **stack_a, t_node **stack_b);
+void		check_max_number_is_top(t_node **stack_b, t_node **stack_a);
+void		check_min_number_is_top(t_node **stack_a, t_node **stack_b);
+
+void		put_everynode_to_stack_a(t_node **stack_a, t_node **stack_b);
+
 int			ft_isspace(int c);
 void		pass_space(char *str, int *i);
 int			get_stack_size(t_node *stack);
 int			get_max_number(t_node *stack);
 int			get_min_number(t_node *stack);
 
+int			get_max_number_index(t_node *stack);
+int			get_min_number_index(t_node *stack);
+
 void		free_array(char **array);
 void		free_list(t_node *list);
 void		free_list_both(t_node *list_1, t_node *list_2);
+
+void		print_stack(t_node *stack);
 
 #endif

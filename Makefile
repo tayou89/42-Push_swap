@@ -11,8 +11,12 @@ SRCS = push_swap.c \
 	   check_exception.c initialize_stack_a.c \
 	   commands.c \
 	   control_node.c \
+	   sort_until_sorted.c \
+	   put_everynode_to_stack_a.c \
 	   get_string_array.c get_int_array.c get_stack_a.c ft_atoll.c \
-	   utils_1.c \
+	   check_perfertly_sorted.c check_first_second_node.c check_first_last_node.c \
+	   check_if_sorted_stack_b.c check_max_min_location.c \
+	   utils_1.c utils_2.c \
 	   free_functions.c
 		
 OBJS = $(SRCS:.c=.o)
