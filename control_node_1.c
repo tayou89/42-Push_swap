@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:21:43 by tayou             #+#    #+#             */
-/*   Updated: 2023/04/05 12:13:50 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/28 20:57:24 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,11 @@ t_node	*del_node_front(t_node *stack)
 {
 	t_node	*temp;
 
-	if (stack == (void *) 0)
-		return (stack);
 	temp = stack;
 	if (stack->next != (void *) 0)
 		stack->next->prev = (void *) 0;
 	stack = stack->next;
 	free(temp);
-	temp = (void *) 0;
 	return (stack);
 }
 

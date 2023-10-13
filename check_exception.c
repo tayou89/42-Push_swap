@@ -6,32 +6,43 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:51:37 by tayou             #+#    #+#             */
-/*   Updated: 2023/04/06 17:26:28 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/28 15:17:28 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static int	check_error(char **str);
 static int	check_if_number(char **str);
 static int	check_if_int(char **str);
 static int	check_if_duplicate(char **str);
-static int	check_int_by_over_flow(char *str);
 
 void	check_exception(int argc, char **argv)
 {
-	char	**str;
+	char	**string_array;
 
 	if (argc <= 1)
 		exit(1);
-	str = get_string_array(argv);
+	string_array = get_string_array(argv);
+	if (check_error(string_array) == 1)
+	{
+		free_array(string_array);
+		exit(2);
+	}
+	else
+		free_array(string_array);
+}
+
+static int	check_error(char **str)
+{
 	if (check_if_number(str) == 0 || check_if_int(str) == 0
 		|| check_if_duplicate(str) == 0)
 	{
 		ft_printf("Error\n");
-		free_array(str);
-		exit(2);
+		return (1);
 	}
-	free_array(str);
+	else
+		return (0);
 }
 
 static int	check_if_number(char **str)
@@ -45,8 +56,6 @@ static int	check_if_number(char **str)
 		j = 0;
 		pass_space(str[i], &j);
 		pass_sign(str[i], &j);
-		if (str[i][j] == '\0')
-			return (0);
 		while (str[i][j] != '\0')
 		{
 			if (ft_isdigit(str[i][j]) == 1)
@@ -59,44 +68,23 @@ static int	check_if_number(char **str)
 	return (1);
 }
 
-int	check_if_int(char **str)
+static int	check_if_int(char **str)
 {
-	int	i;
-	int	j;
+	long long	number;
+	long long	int_max;
+	long long	int_min;
+	int			i;
 
+	int_max = 2147483647;
+	int_min = -2147483648;
 	i = 0;
 	while (str[i] != (void *) 0)
 	{
-		j = 0;
-		pass_space(str[i], &j);
-		if (ft_strncmp(&str[i][j], "-2147483648", 20) == 0)
-		{
+		number = ft_atoll(str[i]);
+		if (number < int_min || number > int_max)
+			return (0);
+		else
 			i++;
-			continue ;
-		}
-		if (check_int_by_over_flow(&str[i][j]) == 0)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-static int	check_int_by_over_flow(char *str)
-{
-	int	after_number;
-	int	before_number;
-	int	i;
-
-	after_number = 0;
-	i = 0;
-	pass_sign(str, &i);
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		before_number = after_number;
-		after_number = after_number * 10 + (str[i] - '0');
-		if (after_number / 10 != before_number)
-			return (0);
-		i++;
 	}
 	return (1);
 }
