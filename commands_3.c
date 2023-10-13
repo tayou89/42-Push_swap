@@ -1,43 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_3.c                                          :+:      :+:    :+:   */
+/*   commands_3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/27 23:17:03 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/28 15:20:53 by tayou            ###   ########.fr       */
+/*   Created: 2023/03/28 14:42:37 by tayou             #+#    #+#             */
+/*   Updated: 2023/03/31 14:13:49 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-int	get_distance_to_top(t_node *node)
+void	command_swap_both(t_node *stack_a, t_node *stack_b)
 {
-	int	distance;
-	int	i;
-
-	i = 0;
-	while (node->prev != (void *) 0)
-	{
-		node = node->prev;
-		i++;
-	}
-	distance = i;
-	return (distance);
+	command_swap(stack_a);
+	command_swap(stack_b);
 }
 
-int	get_distance_to_bottom(t_node *node)
+void	command_rotate_up_both(t_node **stack_a, t_node **stack_b)
 {
-	int	distance;
-	int	i;
+	command_rotate_up(stack_a, stack_b);
+	command_rotate_up(stack_b, stack_a);
+}
 
-	i = 0;
-	while (node->next != (void *) 0)
-	{
-		node = node->next;
-		i++;
-	}
-	distance = i;
-	return (distance);
+void	command_rotate_down_both(t_node **stack_a, t_node **stack_b)
+{
+	command_rotate_down(stack_a, stack_b);
+	command_rotate_down(stack_b, stack_a);
 }

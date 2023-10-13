@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:33:21 by tayou             #+#    #+#             */
-/*   Updated: 2022/11/21 21:17:11 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/28 21:53:34 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		i--;
 	return (copy_s1[i] - copy_s2[i]);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int	main()
-{
-	char	*s1 = "";
-	char	*s2 = "abcde";
-	size_t	n;
-
-	scanf("%lu", &n);
-	printf("strncmp: %d\n", strncmp(s1, s2, n));
-	printf("ft_strncmp: %d\n", ft_strncmp(s1, s2, n));
-	return (0);
-}
-*/

@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:56:46 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/26 23:39:26 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/28 15:04:52 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	check_perfectly_sorted_stack_a(t_node *stack)
 	{
 		if (stack->number == max_number && stack->next->number != min_number)
 			return (0);
-		if (stack->number != max_number &&
-			stack->next->number != stack->number + 1)
+		if (stack->number != max_number
+			&& stack->next->number != stack->number + 1)
 			return (0);
 		stack = stack->next;
 	}
@@ -39,7 +39,7 @@ int	check_perfectly_sorted_stack_a(t_node *stack)
 
 int	check_perfectly_sorted_stack_b(t_node *stack)
 {
-	int 	min_number;
+	int		min_number;
 	int		max_number;
 	t_node	*stack_head;
 
@@ -52,7 +52,8 @@ int	check_perfectly_sorted_stack_b(t_node *stack)
 	{
 		if (stack->number == min_number && stack->next->number != max_number)
 			return (0);
-		if (stack->number != min_number && stack->next->number != stack->number - 1)
+		if (stack->number != min_number
+			&& stack->next->number != stack->number - 1)
 			return (0);
 		stack = stack->next;
 	}

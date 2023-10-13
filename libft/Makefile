@@ -19,23 +19,25 @@ SRCS_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 SRCS_PRINTF = ft_printf.c ft_various.c \
 			  ft_print_character.c ft_print_string.c \
 			  ft_print_decimal.c ft_print_unsigned.c ft_print_hexa.c \
-			  ft_print_address.c ft_print_percent.c \
+			  ft_print_address.c ft_print_percent.c 
+SRCS_GNL = get_next_line.c
 
 OBJS_PART1 = $(SRCS_PART1:.c=.o)
 OBJS_PART2 = $(SRCS_PART2:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 OBJS_PRINTF = $(SRCS_PRINTF:.c=.o)
+OBJS_GNL = $(SRCS_GNL:.c=.o)
 
 ifdef WITH_BONUS
-	TOTAL_OBJS = $(OBJS_PART1) $(OBJS_PART2) $(OBJS_BONUS) $(OBJS_PRINTF)
+	TOTAL_OBJS = $(OBJS_PART1) $(OBJS_PART2) $(OBJS_BONUS) $(OBJS_PRINTF) $(OBJS_GNL)
 else
-	TOTAL_OBJS = $(OBJS_PART1) $(OBJS_PART2) $(OBJS_PRINTF)
+	TOTAL_OBJS = $(OBJS_PART1) $(OBJS_PART2) $(OBJS_PRINTF) $(OBJS_GNL)
 endif
 
 all : $(NAME)
 
 clean : 
-	$(RM) $(RMFLAGS) $(OBJS_PART1) $(OBJS_PART2) $(OBJS_BONUS) $(OBJS_PRINTF)
+	$(RM) $(RMFLAGS) $(OBJS_PART1) $(OBJS_PART2) $(OBJS_BONUS) $(OBJS_PRINTF) $(OBJS_GNL)
 
 fclean : clean
 	$(RM) $(RMFLAGS) $(NAME)

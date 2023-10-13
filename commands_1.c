@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 11:53:52 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/23 14:12:52 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/31 15:55:32 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	command_push(t_node **stack_from, t_node **stack_to)
 {
 	t_node	*new_node;
 
-	if (stack_from == (void *) 0)
+	if (*stack_from == (void *) 0)
 		return ;
 	new_node = get_new_node((*stack_from)->number);
 	if (new_node == (void *) 0)
@@ -44,7 +44,7 @@ void	command_rotate_up(t_node **stack_to_rotate, t_node **other_stack)
 	t_node	*new_node;
 
 	size = get_stack_size(*stack_to_rotate);
-	if (size == 1 || stack_to_rotate == (void *) 0)
+	if (size == 1 || *stack_to_rotate == (void *) 0)
 		return ;
 	new_node = get_new_node((*stack_to_rotate)->number);
 	if (new_node == (void *) 0)
@@ -60,7 +60,7 @@ void	command_rotate_down(t_node **stack_to_rotate, t_node **other_stack)
 	int		size;
 
 	size = get_stack_size(*stack_to_rotate);
-	if (size == 1 || stack_to_rotate == (void *) 0)
+	if (size == 1 || *stack_to_rotate == (void *) 0)
 		return ;
 	last_node = find_last_node(*stack_to_rotate);
 	new_node = get_new_node(last_node->number);

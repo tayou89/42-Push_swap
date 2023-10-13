@@ -6,12 +6,16 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 00:22:28 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/05 09:59:14 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/28 13:51:38 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -88,5 +92,7 @@ void	ft_print_decimal(int n, int *print_count);
 void	ft_print_unsigned(unsigned int number, int *print_count);
 void	ft_print_hexa(char character, unsigned int number, int *print_count);
 void	ft_print_percent(int *print_count);
+
+char	*get_next_line(int fd);
 
 #endif

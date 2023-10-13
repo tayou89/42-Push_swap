@@ -6,16 +6,43 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:51:37 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/12 08:05:25 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/31 10:24:30 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	pass_sign(char *str, int *i)
+static int	check_error(char **str);
+static int	check_if_number(char **str);
+static int	check_if_int(char **str);
+static int	check_if_duplicate(char **str);
+
+void	check_exception(int argc, char **argv)
 {
-	if (str[*i] == '+' || str[*i] == '-')
-		(*i)++;
+	char	**string_array;
+
+	if (argc <= 1)
+		exit(1);
+	string_array = get_string_array(argv);
+	if (check_error(string_array) == 1)
+	{
+		free_array(string_array);
+		exit(2);
+	}
+	else
+		free_array(string_array);
+}
+
+static int	check_error(char **str)
+{
+	if (check_if_number(str) == 0 || check_if_int(str) == 0
+		|| check_if_duplicate(str) == 0)
+	{
+		ft_printf("Error\n");
+		return (1);
+	}
+	else
+		return (0);
 }
 
 static int	check_if_number(char **str)
@@ -29,6 +56,8 @@ static int	check_if_number(char **str)
 		j = 0;
 		pass_space(str[i], &j);
 		pass_sign(str[i], &j);
+		if (str[i][j] == '\0')
+			return (0);
 		while (str[i][j] != '\0')
 		{
 			if (ft_isdigit(str[i][j]) == 1)
@@ -88,32 +117,4 @@ static int	check_if_duplicate(char **str)
 	}
 	free(int_array);
 	return (1);
-}
-
-static int	check_error(char **str)
-{
-	if (check_if_number(str) == 0 || check_if_int(str) == 0 ||
-		check_if_duplicate(str) == 0)
-	{
-		ft_printf("Error\n");
-		return (1);
-	}
-	else
-		return (0);
-}
-
-void	check_exception(int argc, char **argv)
-{
-	char	**string_array;
-
-	if (argc <= 1)
-		exit(1);
-	string_array = get_string_array(argv);
-	if (check_error(string_array) == 1)
-	{
-		free_array(string_array);
-		exit(2);
-	}
-	else
-		free_array(string_array);
 }

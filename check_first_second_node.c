@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:00:43 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/26 22:18:05 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/27 23:24:34 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	check_stack_a(t_node **stack_a)
 
 	max_number = get_max_number(*stack_a);
 	min_number = get_min_number(*stack_a);
-	if ((*stack_a)->number == max_number &&
-		(*stack_a)->next->number != min_number)
+	if ((*stack_a)->number == max_number
+		&& (*stack_a)->next->number != min_number)
 		return (1);
 	if ((*stack_a)->number > (*stack_a)->next->number)
 		return (1);

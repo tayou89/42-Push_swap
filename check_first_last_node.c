@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:16:28 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/26 23:45:51 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/27 23:24:01 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,23 @@
 
 int		find_right_position(t_node *stack_b, int number);
 int		check_right_position(t_node *stack_b, int min, int max, int number);
-void	rotate_to_the_position(t_node **stack_b, int position, t_node **stack_a);
+void	rotate_to_position(t_node **stack_b, int position, t_node **stack_a);
 
-void	check_first_last_node(t_node **stack_a, t_node **stack_b, int pivot)
+void	check_first_last_node(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*last_node;
 	int		right_position;
-//	int		rra_count;
 
 	last_node = find_last_node(*stack_a);
-	if ((*stack_a)->number < pivot
-		&& (*stack_a)->number < last_node->number)
+	if ((*stack_a)->number < last_node->number)
 	{
 		right_position = find_right_position(*stack_b, (*stack_a)->number);
-		rotate_to_the_position(stack_b, right_position, stack_a);
+		rotate_to_position(stack_b, right_position, stack_a);
 		command_push(stack_a, stack_b);
 		ft_printf("pb\n");
 	}
 	else
 	{
-//		rra_count = find_rra_count(
 		command_rotate_down(stack_a, stack_b);
 		ft_printf("rra\n");
 	}
@@ -76,7 +73,7 @@ int	check_right_position(t_node *stack_b, int min, int max, int number)
 	return (0);
 }
 
-void	rotate_to_the_position(t_node **stack_b, int position, t_node **stack_a)
+void	rotate_to_position(t_node **stack_b, int position, t_node **stack_a)
 {
 	int	stack_size;
 	int	i;

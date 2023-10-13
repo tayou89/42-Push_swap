@@ -6,23 +6,13 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 07:36:38 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/13 07:07:34 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/27 23:06:19 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_int_count(char **string_array)
-{
-	int	int_count;
-	int	i;
-
-	i = 0;
-	while (string_array[i] != (void *) 0)
-		i++;
-	int_count = i;
-	return (int_count);
-}
+static int	get_int_count(char **string_array);
 
 int	*get_int_array(char **string_array, int *int_count)
 {
@@ -43,4 +33,16 @@ int	*get_int_array(char **string_array, int *int_count)
 		i++;
 	}
 	return (int_array);
+}
+
+static int	get_int_count(char **string_array)
+{
+	int	int_count;
+	int	i;
+
+	i = 0;
+	while (string_array[i] != (void *) 0)
+		i++;
+	int_count = i;
+	return (int_count);
 }
