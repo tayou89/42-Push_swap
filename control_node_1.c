@@ -6,20 +6,11 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:21:43 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/20 13:21:45 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/23 14:13:13 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_node	*find_last_node(t_node *stack)
-{
-	if (stack == (void *) 0)
-		return (stack);
-	while (stack->next != (void *) 0)
-		stack = stack->next;
-	return (stack);
-}
 
 t_node	*get_new_node(int number)
 {
@@ -62,6 +53,7 @@ t_node	*add_node_front(t_node *stack, t_node *new_node)
 		return (stack);
 	}
 	new_node->next = stack;
+	stack->prev = new_node;
 	stack = new_node;
 	return (stack);
 }

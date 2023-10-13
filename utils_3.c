@@ -1,22 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_everynode_to_stack_a.c                         :+:      :+:    :+:   */
+/*   utils_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 13:24:09 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/20 13:24:11 by tayou            ###   ########.fr       */
+/*   Created: 2023/03/23 14:24:24 by tayou             #+#    #+#             */
+/*   Updated: 2023/03/23 15:19:31 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	put_everynode_to_stack_a(t_node **stack_a, t_node **stack_b)
+void	print_ra_by_count(int count)
 {
-	while ((*stack_b) != (void *) 0)
+	int	i;
+
+	i = 0;
+	while (i < count)
 	{
-		command_push(stack_b, stack_a);
-		ft_printf("pa\n");
+		ft_printf("ra\n");
+		i++;
+	}
+}
+
+void	print_rra_by_count(int count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
+	{
+		ft_printf("rra\n");
+		i++;
+	}
+}
+
+void	print_rb_by_count(int count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
+	{
+		ft_printf("rb\n");
+		i++;
+	}
+}
+
+void	print_rrb_by_count(int count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
+	{
+		ft_printf("rrb\n");
+		i++;
 	}
 }
