@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   control_node_2_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/08 15:21:31 by tayou             #+#    #+#             */
-/*   Updated: 2023/04/05 12:40:08 by tayou            ###   ########.fr       */
+/*   Created: 2023/04/05 12:27:37 by tayou             #+#    #+#             */
+/*   Updated: 2023/04/05 12:38:52 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
-int	main(int argc, char *argv[])
+t_node	*find_last_node(t_node *stack)
 {
-	t_node	*stack_a;
-
-	check_exception(argc, argv);
-	stack_a = get_stack_a(argv);
-	stack_a = sort_stack_a(stack_a);
-	free_list(stack_a);
-	return (0);
+	if (stack == (void *) 0)
+		return (stack);
+	while (stack->next != (void *) 0)
+		stack = stack->next;
+	return (stack);
 }

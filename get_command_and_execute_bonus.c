@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_command_and_execute.c                          :+:      :+:    :+:   */
+/*   get_command_and_execute_bonus.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 14:52:12 by tayou             #+#    #+#             */
-/*   Updated: 2023/04/01 22:34:24 by tayou            ###   ########.fr       */
+/*   Created: 2023/04/05 12:09:06 by tayou             #+#    #+#             */
+/*   Updated: 2023/04/05 12:35:55 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "checker_bonus.h"
 
 void	execute_command(t_node **stack_a, t_node **stack_b, char *command);
 void	execute_command_s(t_node **stack_a, t_node **stack_b, char *command);
@@ -42,7 +42,7 @@ void	execute_command(t_node **stack_a, t_node **stack_b, char *command)
 	else if (ft_strncmp(command, "r", 1) == 0)
 		execute_command_r(stack_a, stack_b, command);
 	else
-		print_error_and_exit(stack_a, stack_b, command);
+		print_error_exit(stack_a, stack_b, command);
 }
 
 void	execute_command_s(t_node **stack_a, t_node **stack_b, char *command)
@@ -57,7 +57,7 @@ void	execute_command_s(t_node **stack_a, t_node **stack_b, char *command)
 	else if (ft_strncmp(command, "ss\n", check_size) == 0)
 		command_swap_both(*stack_a, *stack_b);
 	else
-		print_error_and_exit(stack_a, stack_b, command);
+		print_error_exit(stack_a, stack_b, command);
 }
 
 void	execute_command_p(t_node **stack_a, t_node **stack_b, char *command)
@@ -70,7 +70,7 @@ void	execute_command_p(t_node **stack_a, t_node **stack_b, char *command)
 	else if (ft_strncmp(command, "pb\n", check_size) == 0)
 		command_push(stack_a, stack_b);
 	else
-		print_error_and_exit(stack_a, stack_b, command);
+		print_error_exit(stack_a, stack_b, command);
 }
 
 void	execute_command_r(t_node **stack_a, t_node **stack_b, char *command)
@@ -91,5 +91,5 @@ void	execute_command_r(t_node **stack_a, t_node **stack_b, char *command)
 	else if (ft_strncmp(command, "rrr\n", check_size) == 0)
 		command_rotate_down_both(stack_a, stack_b);
 	else
-		print_error_and_exit(stack_a, stack_b, command);
+		print_error_exit(stack_a, stack_b, command);
 }

@@ -24,16 +24,16 @@ SRCS = push_swap.c \
 	   check_max_min_location.c \
 	   utils_1.c utils_2.c utils_3.c \
 	   free_functions.c 
-SRCS_BONUS = checker.c \
-			 check_exception.c \
-			 get_stack_a.c \
-			 get_string_array.c get_int_array.c ft_atoll.c \
-			 get_command_and_execute.c \
-			 commands_1.c commands_2.c \
-			 control_node_1.c control_node_2.c \
-			 check_perfectly_sorted.c \
-			 utils_1.c utils_2.c \
-			 free_functions.c
+SRCS_BONUS = checker_bonus.c \
+			 check_exception_bonus.c \
+			 get_stack_a_bonus.c \
+			 get_string_array_bonus.c get_int_array_bonus.c ft_atoll_bonus.c \
+			 get_command_and_execute_bonus.c \
+			 commands_1_bonus.c commands_2_bonus.c \
+			 control_node_1_bonus.c control_node_2_bonus.c \
+			 check_perfectly_sorted_bonus.c \
+			 utils_1_bonus.c utils_2_bonus.c \
+			 free_functions_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)

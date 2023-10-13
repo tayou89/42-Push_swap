@@ -6,7 +6,8 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:26:18 by tayou             #+#    #+#             */
-/*   Updated: 2023/04/01 22:46:59 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/05 11:48:44 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/02 03:12:51 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +31,8 @@ void	sort_to_stack_a(t_node **stack_a, t_node **stack_b, t_node *pivot)
 			free_all_and_exit(stack_a, stack_b, &pivot_head);
 		rotate_and_push(stack_a, stack_b, stack_b_pivot);
 		pivot = pivot->next;
+		free_list(stack_b_pivot);
 	}
-	free_list(stack_b_pivot);
 }
 
 t_node	*get_stack_b_pivot(t_node *pivot)
