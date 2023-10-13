@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:21:31 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/24 23:15:59 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/25 13:54:10 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,14 @@
 int	main(int argc, char *argv[])
 {
 	t_node	*stack_a;
-	int		divisor;
 
-	divisor = 35;
 	check_exception(argc, argv);
 	stack_a = get_stack_a(argv);
-	stack_a = sort_stack_a(stack_a, divisor);
+	stack_a = sort_stack_a(stack_a);
 	free_list(stack_a);
 	return (0);
 }
-
+/*
 void	push_other_node(t_node **stack_a, t_node **stack_b)
 {
 	while (*stack_a != (void *) 0)
@@ -82,3 +80,4 @@ void	roughly_sort_to_stack_a(t_node **stack_a, t_node **stack_b)
 	}
 	free_list(pivot_head);
 }
+*/

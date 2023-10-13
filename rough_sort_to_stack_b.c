@@ -6,38 +6,76 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:06:39 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/24 23:16:51 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/25 13:35:24 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//int		get_pivot_number(t_node *pivot);
+t_node	*get_pivot(t_node *pivot, int pivot_number);
 void	push_node_under_pivot(t_node **stack_a, t_node **stack_b, int pivot);
 void	put_under_pivot_node_top(t_node **stack_a, t_node **stack_b, int pivot);
 int	 	check_stack_top_is_max(t_node *stack);
 
-void	rough_sort_to_stack_b(t_node **stack_a, t_node **stack_b, int pivot)
+void	rough_sort_to_stack_b(t_node **stack_a, t_node **stack_b, t_node **pivot)
 {
 	int		stack_a_size;
+	int		pivot_number;
+//	t_node	*last_pivot;
 
 	stack_a_size = get_stack_size(*stack_a);
+//	last_pivot = find_last_node(*pivot);
+	pivot_number = (*pivot)->number;
 	if (stack_a_size < 3)
 		return ;
 	else if (stack_a_size <= 100)
-		pivot = pivot + stack_a_size / 3;
-//	else if (stack_a_size <= 200)
-//		pivot = pivot + stack_a_size / 7;
-//	else if (stack_a_size <= 300)
-//		pivot = pivot + stack_a_size / 6;
+		pivot_number = pivot_number + stack_a_size / 3;
 	else
-		pivot = pivot + stack_a_size / 6;
-//	ft_printf("pivot: %d\n", pivot);
-	push_node_under_pivot(stack_a, stack_b, pivot);
-//	ft_printf("-----------------stack_a------------------\n");
-//	print_stack(*stack_a);
-//	ft_printf("-----------------stack_b------------------\n");
-//	print_stack(*stack_b);
+		pivot_number = pivot_number + stack_a_size / 7;
+	*pivot = get_pivot(*pivot, pivot_number);
+	if (*pivot == (void *) 0)
+	{
+		free_list_both(*stack_a, *stack_b);
+		return ;
+	}
+//	last_pivot = find_last_node(*pivot);
+	push_node_under_pivot(stack_a, stack_b, (*pivot)->number);
 	rough_sort_to_stack_b(stack_a, stack_b, pivot);
+}
+/*
+int	get_pivot_number(t_node *pivot)
+{
+	int	 pivot_number;
+
+	if (pivot == (void *) 0)
+		pivot_number = 0;
+	else
+		pivot_number = pivot->number;
+	return (pivot_number);
+}
+*/
+t_node	*get_pivot(t_node *pivot, int pivot_number)
+{
+	t_node	*new_node;
+
+	if (pivot == (void *) 0)
+	{
+		pivot = get_new_node(pivot_number);
+		if (pivot == (void *) 0)
+			return ((void *) 0);
+	}
+	else
+	{
+		new_node = get_new_node(pivot_number);
+		if (new_node == (void *) 0)
+		{
+			free_list(pivot);
+			return ((void *) 0);
+		}
+		pivot = add_node_front(pivot, new_node);
+	}
+	return (pivot);
 }
 
 void	push_node_under_pivot(t_node **stack_a, t_node **stack_b, int pivot)
@@ -96,25 +134,4 @@ int	 check_stack_top_is_max(t_node *stack)
 		return (1);
 	else
 		return (0);
-}
-
-void	put_under_pivot_node_top(t_node **stack_a, t_node **stack_b, int pivot)
-{
-	t_node	*under_pivot_node;
-	int		distance_to_top;
-	int		distance_to_bottom;
-
-	under_pivot_node = find_under_pivot_node(*stack_a, pivot);
-	distance_to_top = get_distance_to_top(under_pivot_node);
-	distance_to_bottom = get_distance_to_bottom(under_pivot_node);
-	if (distance_to_top <= distance_to_bottom)
-	{
-		rotate_up_by_distance(stack_a, stack_b, distance_to_top);
-		print_ra_by_count(distance_to_top);
-	}
-	else
-	{
-		rotate_down_by_distance(stack_a, stack_b, distance_to_bottom + 1);
-		print_rra_by_count(distance_to_bottom + 1);
-	}
 }

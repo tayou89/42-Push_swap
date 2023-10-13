@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 09:39:01 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/23 15:19:27 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/25 13:53:10 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,20 @@ t_node		*del_node_front(t_node *stack);
 t_node		*find_last_node(t_node *stack);
 t_node		*find_max_node(t_node *stack);
 t_node		*find_under_pivot_node(t_node *stack, int pivot);
+void		put_under_pivot_to_top(t_node **stack, t_node **other, int pivot);
 
 char		**get_string_array(char **argv);
 int			*get_int_array(char **string_array, int *int_count);
 t_node		*get_stack_a(char **argv);
-t_node		*get_pivot(t_node *stack_a, int divisor);
-int			get_pivot_number(t_node *pivot, t_node *stack_a);
+//t_node		*get_pivot(t_node *stack_a, int divisor);
+//int			get_pivot_number(t_node *pivot, t_node *stack_a);
 int			get_distance_to_top(t_node *node);
 int			get_distance_to_bottom(t_node *node);
 long long	ft_atoll(const char *str);
 
-t_node		*sort_stack_a(t_node *stack_a, int divisor);
+t_node		*sort_stack_a(t_node *stack_a);
 void		sort_until_sorted(t_node **stack_a, t_node **stack_b, int divisor);
-void		rough_sort_to_stack_b(t_node **stack_a, t_node **stack_b, int pivot);
+void		rough_sort_to_stack_b(t_node **stack_a, t_node **stack_b, t_node **pivot);
 void		push_max_to_stack_a(t_node **stack_a, t_node **stack_b);
 
 int			check_perfectly_sorted_stack_a(t_node *stack);
