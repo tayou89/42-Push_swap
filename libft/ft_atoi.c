@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 21:45:39 by tayou             #+#    #+#             */
-/*   Updated: 2022/11/21 22:04:41 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/06 18:24:26 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,3 @@ int	ft_atoi(const char *str)
 	number *= sign;
 	return ((int) number);
 }
-/*
-#include <stdio.h>
-#include <stdlib.h>
-
-int	main()
-{
-	printf("atoi: %d\n", atoi(((void *) 0)));
-	printf("ft_atoi: %d\n", ft_atoi(((void *) 0)));
-	return (0);
-}
-*/

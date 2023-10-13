@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 00:56:12 by tayou             #+#    #+#             */
-/*   Updated: 2022/11/14 22:09:41 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/06 18:27:25 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int	main()
-{
-	char	*s1 = "abcdefg";
-	char	*s2 = "abcfefg";
-	size_t	n;
-
-	printf("s1: %s\n", s1);
-	printf("s2: %s\n", s2);
-	scanf("%lu", &n);
-	printf("memcmp: %d\n", memcmp(s1, s2, n));
-	printf("ft_memcmp: %d\n", ft_memcmp(s1, s2, n));
-	return (0);
-}
-*/

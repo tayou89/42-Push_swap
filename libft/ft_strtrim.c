@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 20:56:29 by tayou             #+#    #+#             */
-/*   Updated: 2022/11/22 22:47:07 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/06 18:30:20 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	trimmed_s1 = get_string(s1, start_point, end_point);
 	return (trimmed_s1);
 }
-/*
-#include <stdio.h>
-
-int	main()
-{
-	char	*s1 = "";
-	char	*set = " \n\t";
-
-	printf("s1: %s\n", s1);
-	printf("set: %s\n", set);
-	printf("trimmed_s1: %s\n", ft_strtrim(s1, set));
-	return (0);
-}
-*/

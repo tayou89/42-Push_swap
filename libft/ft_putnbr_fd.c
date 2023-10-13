@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:06:28 by tayou             #+#    #+#             */
-/*   Updated: 2022/11/19 17:31:37 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/06 18:28:41 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,3 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd((int) number, fd);
 	ft_putchar_fd(remainder, fd);
 }
-/*
-#include <stdio.h>
-
-int	main()
-{
-	int	n;
-	int	fd;
-
-	printf("n: ");
-	scanf("%d", &n);
-	printf("fd: ");
-	scanf("%d", &fd);
-	ft_putnbr_fd(n, fd);
-	return (0);
-}
-*/

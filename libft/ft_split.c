@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 23:28:26 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/12 06:30:32 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/06 18:29:11 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,26 +112,3 @@ char	**ft_split(char const *s, char c)
 	array[array_size] = 0;
 	return (array);
 }
-/*
-#include <stdio.h>
-
-int	main()
-{
-	char	*s = "\0    He   is   a   good   man ";
-	char	c;
-	char	**string_array;
-	int		i;
-
-	printf("s: %s\n", s);
-	printf("c: ");
-	scanf("%c", &c);
-	string_array = ft_split(s, c);
-	i = 0;
-	while (string_array[i] != NULL)
-	{
-		printf("array[%d]: %s\n", i, string_array[i]);
-		i++;
-	}
-	return (0);
-}
-*/

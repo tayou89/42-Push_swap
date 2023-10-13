@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 02:25:17 by tayou             #+#    #+#             */
-/*   Updated: 2022/11/18 02:54:49 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/06 18:25:42 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,3 @@ char	*ft_itoa(int n)
 	string = fill_string(string, number, digit);
 	return (string);
 }
-/*
-#include <stdio.h>
-
-int	main()
-{
-	int	n;
-
-	printf("n: ");
-	scanf("%d", &n);
-	printf("ft_itoa: %s\n", ft_itoa(n));
-	return (0);
-}
-*/

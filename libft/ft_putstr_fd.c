@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 16:41:02 by tayou             #+#    #+#             */
-/*   Updated: 2022/11/19 16:58:20 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/06 18:29:03 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,3 @@ void	ft_putstr_fd(char *s, int fd)
 		i++;
 	}
 }
-/*
-#include <stdio.h>
-
-int	main()
-{
-	char	s[] = "abcdefg";
-	int		fd;
-
-	printf("s: %s\n", s);
-	printf("fd: ");
-	scanf("%d", &fd);
-	ft_putstr_fd(s, fd);
-	printf("\n");
-	return (0);
-}
-*/
