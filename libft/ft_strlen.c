@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 00:05:51 by tayou             #+#    #+#             */
-/*   Updated: 2022/11/14 22:17:09 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/06 18:29:52 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,3 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int	main()
-{
-	char	*s;
-
-	s = "abc def";
-	printf("%s\n", s);
-	printf("strlen: %lu\n", strlen(s));
-	printf("ft_strlen: %lu\n", ft_strlen(s));
-	return (0);
-}
-*/

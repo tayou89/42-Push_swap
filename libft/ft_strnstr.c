@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 23:45:38 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/28 14:04:59 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/06 18:30:06 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,22 +53,3 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (0);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int	main()
-{
-	char	*haystack = "food is good";
-	char	*needle = "good";
-	size_t	len;
-
-	printf("haystack: %s\n", haystack);
-	printf("needle: %s\n", needle);
-	printf("양의 정수를 입력하십시오: ");
-	scanf("%lu", &len);
-	printf("strnstr: %s\n", strnstr(haystack, needle, len));
-	printf("ft_strnstr: %s\n", ft_strnstr(haystack, needle, len));
-	return (0);
-}
-*/

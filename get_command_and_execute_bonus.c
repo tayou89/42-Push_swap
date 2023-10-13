@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 12:09:06 by tayou             #+#    #+#             */
-/*   Updated: 2023/04/05 12:35:55 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/06 16:22:59 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,12 @@ void	get_command_and_execute(t_node **stack_a, t_node **stack_b)
 	command = get_next_line(0);
 	if (command == (void *) 0)
 		return ;
-	while (*command != '\0')
+	while (command != (void *) 0)
 	{
 		execute_command(stack_a, stack_b, command);
 		free(command);
 		command = get_next_line(0);
 	}
-	free(command);
 }
 
 void	execute_command(t_node **stack_a, t_node **stack_b, char *command)

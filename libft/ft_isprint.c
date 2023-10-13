@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 23:48:04 by tayou             #+#    #+#             */
-/*   Updated: 2022/11/14 22:00:49 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/06 18:25:33 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,3 @@ int	ft_isprint(int c)
 	else
 		return (0);
 }
-/*
-#include <stdio.h>
-#include <ctype.h>
-
-int	main()
-{
-	int	c;
-
-	scanf("%d", &c);
-	printf("isprint: %d\n", isprint(c));
-	printf("ft_isprint: %d\n", ft_isprint(c));
-	return (0);
-}
-*/

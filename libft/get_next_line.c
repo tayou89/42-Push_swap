@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 05:42:51 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/28 22:34:55 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/06 16:21:44 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,18 +81,17 @@ static char	*get_line(char *line, char *backup)
 static char	*renewal_backup(char *backup)
 {
 	char	*temp;
-	int		newline_point;
 	int		start;
 	int		size;
 	int		i;
 
-	if (ft_strchr(backup, '\n') != NULL)
+	if (ft_strchr(backup, '\n') != NULL
+		&& *(ft_strchr(backup, '\n') + 1) != '\0')
 	{
 		i = 0;
 		while (backup[i] != '\n')
 			i++;
-		newline_point = i;
-		start = newline_point + 1;
+		start = i + 1;
 		size = ft_strlen(&backup[start]);
 		temp = backup;
 		backup = ft_substr(temp, start, size);

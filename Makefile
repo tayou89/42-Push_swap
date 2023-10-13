@@ -19,7 +19,6 @@ SRCS = push_swap.c \
 	   sort_to_stack_a.c rotate_to_top.c \
 	   commands_1.c commands_2.c \
 	   control_node_1.c control_node_2.c \
-	   ft_atoll.c \
 	   check_perfectly_sorted.c check_first_second_node.c check_first_last_node.c \
 	   check_max_min_location.c \
 	   utils_1.c utils_2.c utils_3.c \
@@ -27,7 +26,7 @@ SRCS = push_swap.c \
 SRCS_BONUS = checker_bonus.c \
 			 check_exception_bonus.c \
 			 get_stack_a_bonus.c \
-			 get_string_array_bonus.c get_int_array_bonus.c ft_atoll_bonus.c \
+			 get_string_array_bonus.c get_int_array_bonus.c \
 			 get_command_and_execute_bonus.c \
 			 commands_1_bonus.c commands_2_bonus.c \
 			 control_node_1_bonus.c control_node_2_bonus.c \

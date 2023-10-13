@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 20:37:36 by tayou             #+#    #+#             */
-/*   Updated: 2022/11/17 21:17:52 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/06 18:29:31 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	*new_string = '\0';
 	return (new_string - s1_len - s2_len);
 }
-/*
-#include <stdio.h>
-
-int	main()
-{
-	char	*s1 = "";
-	char	*s2 = "";
-
-	printf("s1: %s\n", s1);
-	printf("s2: %s\n", s2);
-	printf("THe new string: %s\n", ft_strjoin(s1, s2));
-	return (0);
-}
-*/
