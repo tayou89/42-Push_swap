@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:17:42 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/25 00:39:37 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/26 18:16:59 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	get_min_number_index(t_node *stack)
 	min_number_index = i;
 	return (min_number_index);
 }
-/*
+
 int	get_pivot_number(t_node *pivot, t_node *stack_a)
 {
 	int	pivot_number;
@@ -71,7 +71,7 @@ int	get_pivot_number(t_node *pivot, t_node *stack_a)
 		pivot_number = pivot->number;
 	return (pivot_number);
 }
-*/
+
 int	get_distance_to_top(t_node *node)
 {
 	int distance;

@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 09:39:01 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/25 13:53:10 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/26 16:29:49 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,15 @@ t_node		*del_node_front(t_node *stack);
 t_node		*find_last_node(t_node *stack);
 t_node		*find_max_node(t_node *stack);
 t_node		*find_under_pivot_node(t_node *stack, int pivot);
-void		put_under_pivot_to_top(t_node **stack, t_node **other, int pivot);
+t_node		*find_over_pivot_node(t_node *stack, int pivot);
+void		rotate_under_pivot_to_top(t_node **stack, t_node **other, int pivot);
+void		rotate_over_pivot_to_top(t_node **stack, t_node **other, int pivot);
 
 char		**get_string_array(char **argv);
 int			*get_int_array(char **string_array, int *int_count);
 t_node		*get_stack_a(char **argv);
-//t_node		*get_pivot(t_node *stack_a, int divisor);
-//int			get_pivot_number(t_node *pivot, t_node *stack_a);
+t_node		*get_pivot(t_node *stack_a, int divisor);
+int			get_pivot_number(t_node *pivot, t_node *stack_a);
 int			get_distance_to_top(t_node *node);
 int			get_distance_to_bottom(t_node *node);
 long long	ft_atoll(const char *str);

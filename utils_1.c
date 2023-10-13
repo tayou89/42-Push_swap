@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 11:59:52 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/23 14:12:43 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/26 17:23:43 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	get_max_number(t_node *stack)
 {
 	int	max_number;
 
+	if (stack == (void *) 0)
+		return (0);
 	max_number = stack->number;
 	while (stack->next != (void *) 0)
 	{
@@ -57,6 +59,8 @@ int	get_min_number(t_node *stack)
 {
 	int	min_number;
 
+	if (stack == (void *) 0)
+		return (0);
 	min_number = stack->number;
 	while (stack->next != (void *) 0)
 	{
