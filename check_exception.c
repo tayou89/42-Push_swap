@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:51:37 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/28 15:17:28 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/31 10:24:30 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static int	check_if_number(char **str)
 		j = 0;
 		pass_space(str[i], &j);
 		pass_sign(str[i], &j);
+		if (str[i][j] == '\0')
+			return (0);
 		while (str[i][j] != '\0')
 		{
 			if (ft_isdigit(str[i][j]) == 1)
