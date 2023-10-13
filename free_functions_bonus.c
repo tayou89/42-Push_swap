@@ -1,43 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_3.c                                          :+:      :+:    :+:   */
+/*   free_functions_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/27 23:17:03 by tayou             #+#    #+#             */
-/*   Updated: 2023/04/01 22:31:27 by tayou            ###   ########.fr       */
+/*   Created: 2023/04/05 12:08:15 by tayou             #+#    #+#             */
+/*   Updated: 2023/04/05 12:08:25 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
-int	get_distance_to_top(t_node *node)
+void	free_array(char **array)
 {
-	int	distance;
 	int	i;
 
 	i = 0;
-	while (node->prev != (void *) 0)
+	while (array[i] != (void *) 0)
 	{
-		node = node->prev;
+		free(array[i]);
 		i++;
 	}
-	distance = i;
-	return (distance);
+	free(array);
 }
 
-int	get_distance_to_bottom(t_node *node)
+void	free_list(t_node *list)
 {
-	int	distance;
-	int	i;
+	t_node	*list_head;
 
-	i = 0;
-	while (node->next != (void *) 0)
+	if (list == (void *) 0)
+		return ;
+	while (list != (void *) 0)
 	{
-		node = node->next;
-		i++;
+		list_head = list;
+		list = list->next;
+		free(list_head);
 	}
-	distance = i;
-	return (distance);
+	list = (void *) 0;
+}
+
+void	free_list_both(t_node *list_1, t_node *list_2)
+{
+	free_list(list_1);
+	free_list(list_2);
+	exit(1);
 }

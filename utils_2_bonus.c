@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_2.c                                          :+:      :+:    :+:   */
+/*   utils_2_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 14:17:42 by tayou             #+#    #+#             */
-/*   Updated: 2023/04/01 22:12:22 by tayou            ###   ########.fr       */
+/*   Created: 2023/04/05 12:11:55 by tayou             #+#    #+#             */
+/*   Updated: 2023/04/05 12:34:49 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 int	get_stack_size(t_node *stack)
 {
@@ -57,36 +57,10 @@ int	get_min_number(t_node *stack)
 	return (min_number);
 }
 
-int	get_max_number_index(t_node *stack)
+void	print_error_exit(t_node **stack_a, t_node **stack_b, char *command)
 {
-	int	max_number_index;
-	int	max_number;
-	int	i;
-
-	max_number = get_max_number(stack);
-	i = 0;
-	while (stack->number != max_number)
-	{
-		stack = stack->next;
-		i++;
-	}
-	max_number_index = i;
-	return (max_number_index);
-}
-
-int	get_min_number_index(t_node *stack)
-{
-	int	min_number;
-	int	min_number_index;
-	int	i;
-
-	min_number = get_min_number(stack);
-	i = 0;
-	while (stack->number != min_number)
-	{
-		stack = stack->next;
-		i++;
-	}
-	min_number_index = i;
-	return (min_number_index);
+	ft_printf("Error\n");
+	free_list_both(*stack_a, *stack_b);
+	free(command);
+	exit(1);
 }

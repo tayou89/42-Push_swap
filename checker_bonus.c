@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 13:03:09 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/31 16:02:18 by tayou            ###   ########.fr       */
+/*   Created: 2023/04/05 12:00:18 by tayou             #+#    #+#             */
+/*   Updated: 2023/04/05 12:41:21 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "checker_bonus.h"
 
 int		check_a_is_sorted(t_node *stack_a);
 int		check_top_is_min_number(t_node *stack_a);
-void	print_error_and_exit(t_node **stack_a, t_node **stack_b, char *command);
 
 int	main(int argc, char **argv)
 {
@@ -30,6 +29,7 @@ int	main(int argc, char **argv)
 	else
 		ft_printf("OK\n");
 	free_list_both(stack_a, stack_b);
+	return (0);
 }
 
 int	check_a_is_sorted(t_node *stack_a)
@@ -52,12 +52,4 @@ int	check_top_is_min_number(t_node *stack_a)
 		return (0);
 	else
 		return (1);
-}
-
-void	print_error_and_exit(t_node **stack_a, t_node **stack_b, char *command)
-{
-	ft_printf("Error\n");
-	free_list_both(*stack_a, *stack_b);
-	free(command);
-	exit(1);
 }

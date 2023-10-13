@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 11:41:12 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/28 20:57:35 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/01 18:50:15 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ t_node	*find_over_pivot_node(t_node *stack, int pivot)
 {
 	t_node	*last_node;
 
+	if (stack == (void *) 0)
+		return ((void *) 0);
 	last_node = find_last_node(stack);
 	while (stack->number <= pivot && last_node->number <= pivot)
 	{

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_exception.c                                  :+:      :+:    :+:   */
+/*   check_exception_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 11:51:37 by tayou             #+#    #+#             */
-/*   Updated: 2023/04/02 03:16:31 by tayou            ###   ########.fr       */
+/*   Created: 2023/04/05 11:59:27 by tayou             #+#    #+#             */
+/*   Updated: 2023/04/05 11:59:33 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 static int	check_error(char **str);
 static int	check_if_number(char **str);
