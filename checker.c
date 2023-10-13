@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:03:09 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/29 11:48:55 by tayou            ###   ########.fr       */
+/*   Updated: 2023/03/31 16:02:18 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	main(int argc, char **argv)
 
 int	check_a_is_sorted(t_node *stack_a)
 {
+	if (stack_a == (void *) 0)
+		return (0);
 	if (check_top_is_min_number(stack_a) != 1)
 		return (0);
 	if (check_perfectly_sorted_stack_a(stack_a) != 1)

@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 09:39:01 by tayou             #+#    #+#             */
-/*   Updated: 2023/03/28 15:06:28 by tayou            ###   ########.fr       */
+/*   Updated: 2023/04/01 22:31:15 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,24 @@ typedef struct s_node
 	struct s_node	*prev;
 }	t_node;
 
-typedef struct s_deque
-{
-	t_node	*first;
-	t_node	*last;
-}	t_deque;
-
 void		check_exception(int argc, char **argv);
 
 t_node		*sort_stack_a(t_node *stack_a);
 void		sort_under_thirty(t_node **stack_a, t_node **stack_b);
 void		sort_over_thirty(t_node **stack_a, t_node **stack_b);
 void		rough_sort_to_b(t_node **stack_a, t_node **stack_b, t_node **pivot);
-void		quick_sort_to_a(t_node **stack_a, t_node **stack_b, t_node *pivot);
-void		sort_three_in_stack_a(t_node **stack_a, t_node **stack_b);
+void		sort_to_stack_a(t_node **stack_a, t_node **stack_b, t_node *pivot);
+void		rotate_to_top(t_node **a, t_node **b, t_node *right, t_node *over);
 
 void		command_swap(t_node *stack);
 void		command_push(t_node **stack_from, t_node **stack_to);
 void		command_rotate_up(t_node **stack_to_rotate, t_node **other_stack);
 void		command_rotate_down(t_node **stack_to_rotate, t_node **other_stack);
-void		rotate_up_by_count(t_node **to_rotate, t_node **other, int count);
-void		rotate_down_by_count(t_node **to_rotate, t_node **other, int count);
 void		push_everynode_to_stack_a(t_node **stack_a, t_node **stack_b);
 void		push_top_to_stack_a(t_node **stack_from, t_node **stack_to);
+void		command_swap_both(t_node *stack_a, t_node *stack_b);
+void		command_rotate_up_both(t_node **stack_a, t_node **stack_b);
+void		command_rotate_down_both(t_node **stack_a, t_node **stack_b);
 
 t_node		*get_new_node(int number);
 t_node		*add_node_back(t_node *stack, t_node *new_node);
@@ -56,6 +51,7 @@ t_node		*add_node_front(t_node *stack, t_node *new_node);
 t_node		*del_node_front(t_node *stack);
 t_node		*find_last_node(t_node *stack);
 t_node		*find_max_node(t_node *stack);
+t_node		*find_min_node(t_node *stack);
 t_node		*find_over_pivot_node(t_node *stack, int pivot);
 
 char		**get_string_array(char **argv);
