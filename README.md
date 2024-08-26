@@ -2,26 +2,6 @@
 
 This project is about sorting data on a stack, with a limited set of instructions, using the lowest possible number of actions. The goal is to create an efficient sorting algorithm using two stacks.
 
-## Project Structure
-
-```
-42-Push_swap
-├── Makefile
-├── checker_Mac
-├── checker_linux
-├── libft
-│   ├── Makefile
-│   └── [libft source files]
-├── requirements
-│   ├── nominette.pdf
-│   └── push_swap.pdf
-└── sources
-    ├── bonus
-    │   └── [bonus source files]
-    └── mandatory
-        └── [mandatory source files]
-```
-
 ## Compilation
 
 The project includes a Makefile with the following rules:
