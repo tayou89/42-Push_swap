@@ -1,73 +1,88 @@
 NAME = push_swap
 NAME2 = checker
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+
+# Commands for Compliing
+GCC = gcc
+GCC_FLAGS = -Wall -Wextra -Werror
 RM = rm
-RMFLAGS = -rf
-AR = ar
-ARFLAGS = -rcs
+RM_FLAGS = -rf
+
+# Exterior Library
 LIBFT = ./libft/libft.a
-LIBFT_DIR = ./libft
-SRCS = push_swap.c \
-	   check_exception.c \
-	   get_stack_a.c \
-	   get_string_array.c get_int_array.c \
-	   sort_stack_a.c \
-	   sort_under_thirty.c \
-	   sort_over_thirty.c \
-	   rough_sort_to_b.c \
-	   sort_to_stack_a.c rotate_to_top.c \
-	   commands_1.c commands_2.c \
-	   control_node_1.c control_node_2.c \
-	   check_perfectly_sorted.c check_first_second_node.c check_first_last_node.c \
-	   check_max_min_location.c \
-	   utils_1.c utils_2.c utils_3.c \
-	   free_functions.c 
-SRCS_BONUS = checker_bonus.c \
-			 check_exception_bonus.c \
-			 get_stack_a_bonus.c \
-			 get_string_array_bonus.c get_int_array_bonus.c \
-			 get_command_and_execute_bonus.c \
-			 commands_1_bonus.c commands_2_bonus.c \
-			 control_node_1_bonus.c control_node_2_bonus.c \
-			 check_perfectly_sorted_bonus.c \
-			 utils_1_bonus.c utils_2_bonus.c \
-			 free_functions_bonus.c
 
-OBJS = $(SRCS:.c=.o)
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+# Paths
+LIBFT_PATH = libft/
+SOURCE_PATH = sources/
+OBJECT_PATH = objects/
+HEADER_PATH = headers/
+MANDATORY_PATH = mandatory/
+BONUS_PATH = bonus/
 
-ifdef WITH_BONUS
-	TOTAL_NAME = $(NAME) $(NAME2)
-else
-	TOTAL_NAME = $(NAME)
-endif
+# Source Names
+MANDATORY_NAMES = push_swap \
+				  check_exception \
+				  get_stack_a \
+				  get_string_array \
+				  get_int_array \
+				  sort_stack_a \
+			   	  sort_under_thirty sort_over_thirty \
+			   	  rough_sort_to_b sort_to_stack_a rotate_to_top \
+			   	  commands_1 commands_2 \
+			   	  control_node_1 control_node_2 \
+			   	  check_perfectly_sorted check_first_second_node check_first_last_node \
+			   	  check_max_min_location \
+			   	  utils_1 utils_2 utils_3 \
+			   	  free_functions 
 
-all : $(TOTAL_NAME)
+BONUS_NAMES = checker \
+			  check_exception \
+			  get_stack_a \
+			  get_string_array get_int_array \
+			  get_command_and_execute \
+			  commands_1 commands_2 \
+			  control_node_1 control_node_2 \
+			  check_perfectly_sorted \
+			  utils_1 utils_2 \
+			  free_functions
 
-$(NAME) : $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $^
+# Sources
+MANDATORY_SOURCES = $(addprefix $(SOURCE_PATH)$(MANDATORY_PATH), $(addsuffix .c, $(MANDATORY_NAMES)))
+BONUS_SOURCES = $(addprefix $(SOURCE_PATH)$(BONUS_PATH), $(addsuffix _bonus.c, $(BONUS_NAMES)))
 
-$(NAME2) : $(LIBFT) $(OBJS_BONUS)
-	$(CC) $(CFLAGS) -o $(NAME2) $^
+# Objects
+MANDATORY_OBJECTS = $(addprefix $(OBJECT_PATH)$(MANDATORY_PATH), $(addsuffix .o, $(MANDATORY_NAMES)))
+BONUS_OBJECTS = $(addprefix $(OBJECT_PATH)$(BONUS_PATH), $(addsuffix _bonus.o, $(BONUS_NAMES)))
+
+# Make Commands
+all : $(NAME)
+
+bonus : $(NAME) $(NAME2)
+
+$(NAME) : $(LIBFT) $(MANDATORY_OBJECTS)
+	$(GCC) $(GCC_FLAGS) -o $(NAME) $^
+
+$(NAME2) : $(LIBFT) $(BONUS_OBJECTS)
+	$(GCC) $(GCC_FLAGS) -o $(NAME2) $^
 
 clean : 
-	make -C $(LIBFT_DIR) clean
-	$(RM) $(RMFLAGS) $(OBJS) $(OBJS_BONUS)
+	make -C $(LIBFT_PATH) clean
+	$(RM) $(RM_FLAGS) $(OBJECT_PATH)
 
 fclean : clean
-	make -C $(LIBFT_DIR) fclean
-	$(RM) $(RMFLAGS) $(NAME) $(NAME2)
+	make -C $(LIBFT_PATH) fclean
+	$(RM) $(RM_FLAGS) $(NAME) $(NAME2)
 
 re : fclean all
 
-bonus :
-	make WITH_BONUS=1
-
 $(LIBFT) : 
-	make bonus -C $(LIBFT_DIR) all
+	make bonus -C $(LIBFT_PATH) all
 
-%.o : %.c
-	$(CC) $(CFLAGS) -o $@ -c $<
+$(OBJECT_PATH)$(MANDATORY_PATH)%.o: $(SOURCE_PATH)$(MANDATORY_PATH)%.c
+	@mkdir -p $(dir $@)
+	$(GCC) $(GCC_FLAGS) -I$(HEADER_PATH) -o $@ -c $<
+
+$(OBJECT_PATH)$(BONUS_PATH)%.o : $(SOURCE_PATH)$(BONUS_PATH)%.c
+	@mkdir -p $(dir $@)
+	$(GCC) $(GCC_FLAGS) -I$(HEADER_PATH) -o $@ -c $<
 
 .PHONY: all clean fclean re bonus libft
